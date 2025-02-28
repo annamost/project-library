@@ -188,3 +188,18 @@ const books = [
   }
 ]
 
+// now we need to add one of these book containers for each new book 
+// first we get the elements 
+const libraryContainer = document.getElementById('library-container')
+console.log(libraryContainer)
+// now we make a function where we create a book container for each book 
+
+books.forEach((book) => {
+  // let bookCover = document.createElement('img')
+  let bookContainer = document.createElement('div')
+  let bookTitle = document.createTextNode(`Titel: ${book.title}`)
+
+  bookContainer.appendChild(bookTitle)
+  libraryContainer.appendChild(bookContainer)
+})
+

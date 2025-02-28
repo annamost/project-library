@@ -72,9 +72,10 @@ button {
   align-items: center;
 }
 
-#book-container {
+/* #book-container {
   display: block;
   background-color: #322111;
   border-radius: 40px;
   width: 30%;
-}
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} */
