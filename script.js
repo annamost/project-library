@@ -74,7 +74,7 @@ const books = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
+    image: './books-images/harry-potter-and-the-sorcerer.jpg'
   },
   {
     title: 'Moby-Dick',
@@ -191,15 +191,65 @@ const books = [
 // now we need to add one of these book containers for each new book 
 // first we get the elements 
 const libraryContainer = document.getElementById('library-container')
-console.log(libraryContainer)
+
 // now we make a function where we create a book container for each book 
+const largeKey = ['author']
+const mediumKey = ['genre', 'rating']
+const smallKey = ['description']
 
 books.forEach((book) => {
-  // let bookCover = document.createElement('img')
+  // Here we have the overall container that will be added to the library part 
   let bookContainer = document.createElement('div')
-  let bookTitle = document.createTextNode(`Titel: ${book.title}`)
+  // now we make another div for the picutre and title 
+  let coverContainer = document.createElement('div')
+  // This is one for the author and ratings etc
+  let authorInfoContainer = document.createElement('div')
+  // And one for the paragrap
+  let descriptionContainer = document.createElement('div')
 
-  bookContainer.appendChild(bookTitle)
+
+  let bookCover = document.createElement('img')
+  let bookTitle = document.createElement('h2')
+  let bookTitleText = document.createTextNode(book.title)
+
+
+  // this is for the general styling
+  bookContainer.className = 'book-container'
+  coverContainer.className = 'cover-container'
+  // bookCoverImg.className = 'book-cover-img'
+  authorInfoContainer.className = 'author-info-container'
+  descriptionContainer.className = 'description-container'
+
+  bookCover.setAttribute('src', book.image)
+
+  coverContainer.appendChild(bookCover)
+
+  bookTitle.appendChild(bookTitleText)
+  coverContainer.appendChild(bookTitle)
+  bookContainer.appendChild(coverContainer)
+
+
+  for (const key in book) {
+    // console.log(book[key])
+    if (largeKey.includes(key)) {
+      let bookTextLarge = document.createElement('h3')
+      bookTextLarge.appendChild(document.createTextNode(`${book[key]} (${book.year})`))
+      authorInfoContainer.appendChild(bookTextLarge)
+    } else if (mediumKey.includes(key)) {
+      let bookTextMedium = document.createElement('h4')
+      bookTextMedium.appendChild(document.createTextNode(`${key}: ${book[key]}`))
+      authorInfoContainer.appendChild(bookTextMedium)
+    } else if (smallKey.includes(key)) {
+      let bookTextP = document.createElement('p')
+      bookTextP.appendChild(document.createTextNode(book[key]))
+      descriptionContainer.appendChild(bookTextP)
+    }
+  }
+
+  bookContainer.appendChild(authorInfoContainer)
+  bookContainer.appendChild(descriptionContainer)
+
+
   libraryContainer.appendChild(bookContainer)
 })
 
