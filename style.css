@@ -1,3 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Rock+3D&display=swap');
+
+
 body {
-  background: blue;
+  background: #A68167;
+  margin: 0;
+}
+
+section {
+  display: flex;
+}
+
+.title-container {
+  background-color: #322111;
+  width: 400px;
+  margin: 0;
+  height: 100vh;
+
+}
+
+.main-container {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.title-container h1 {
+  font-family: "Rock 3D", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #A68167;
+  font-size: 96pt;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+
+}
+
+/* .filter-container {
+  margin-left: 50px;
+  margin-top: 50px;
+} */
+
+.filter-container h2 {
+  font-family: "DynaPuff", serif;
+  color: #322111;
+  width: 120px;
+}
+
+.filter-by {
+  display: flex;
+  width: 600px;
+  gap: 20px;
+  align-items: center;
+}
+
+button {
+  background-color: #322111;
+  color: #D2C1AD;
+  font-family: "DynaPuff", serif;
+  height: 30px;
+  min-width: 100px;
+  border-radius: 40px;
+  border: none;
+
+}
+
+.sorting-way {
+  display: flex;
+  width: 600px;
+  gap: 20px;
+  align-items: center;
+}
+
+#book-container {
+  display: block;
+  background-color: #322111;
+  border-radius: 40px;
+  width: 30%;
 }
