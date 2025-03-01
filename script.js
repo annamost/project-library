@@ -188,6 +188,10 @@ const books = [
   }
 ]
 
+// we have different buttons for filtering and for sorting
+//  I think for sorting I could keep the author year and rating 
+// for filtering i should have a selector though... for genre for example
+
 // now we need to add one of these book containers for each new book 
 // first we get the elements 
 const libraryContainer = document.getElementById('library-container')
@@ -216,7 +220,6 @@ books.forEach((book) => {
   // this is for the general styling
   bookContainer.className = 'book-container'
   coverContainer.className = 'cover-container'
-  // bookCoverImg.className = 'book-cover-img'
   authorInfoContainer.className = 'author-info-container'
   descriptionContainer.className = 'description-container'
 
