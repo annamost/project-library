@@ -1,10 +1,4 @@
-/*Here we have created two different arrays that you can work with if you want.
-If you choose to create your own arrays with elements, just make sure to create
-some properties that is possible to filter and sort.
-
-Remember to remove code you don't need.
-*/
-
+// making the books array
 const books = [
   {
     title: 'The Great Gatsby',
@@ -190,7 +184,7 @@ const books = [
 
 
 // now we need to add one of these book containers for each new book 
-// first we get the elements 
+// first we get the element 
 const libraryContainer = document.getElementById('library-container')
 
 // now we make a function where we create a book container for each book 
@@ -198,7 +192,8 @@ const largeKey = ['author']
 const mediumKey = ['genre', 'rating']
 const smallKey = ['description']
 
-
+//  this function will load each of the books into the webpage 
+// I made it a function so that the different sorting and filter options will redisplay the books
 const displayBooks = (book) => {
   // Here we have the overall container that will be added to the library part 
   let bookContainer = document.createElement('div')
@@ -254,53 +249,53 @@ const displayBooks = (book) => {
   libraryContainer.appendChild(bookContainer)
 }
 
+// with this function I can actually sort the book obj according to a specific key
 const sortingBooks = (keyName) => {
   books.sort((a, b) => String(a[keyName]).localeCompare(String(b[keyName])))
 
 }
-
+// here I now load the default webpage
 books.forEach(displayBooks)
 
-// we have different buttons for filtering and for sorting
-//  I think for sorting I could keep the author year and rating 
-// for filtering i should have a selector though... for genre for example
-const authorButton = document.getElementById('author-sort')
 
+// my buttons for the different sorting are all within one div of the html, so with this I have this specific div as a variable 
 const sortByContainer = document.getElementById('sort-by')
 
+// now I am adding a listener so that I know when a button in the sorting div has been pressed
 sortByContainer.addEventListener('click', function (event) {
   let targetButton = event.target
-
   let buttonName = targetButton.id
   let sortKeyName = buttonName.split('-')[0]
 
+  // here I am now resprting the books array
   sortingBooks(sortKeyName)
 
+  // I need to remove the elements in the html so that I can redisplay them
   while (libraryContainer.hasChildNodes()) {
     libraryContainer.removeChild(libraryContainer.firstChild)
   }
+  // here I now redisplay each book but in the sorted way
   books.forEach(displayBooks)
-
+  // now I want to make sure that the buttons that are not selected return to their default styling 
   let allButtons = document.querySelectorAll('button')
-  // let allButtonArray = Array.from(sortByContainer)
-  // let nonTargetButtons = allButtonArray.filter(element => element != target)
-
 
   allButtons.forEach((btn) => {
     btn.classList.remove('clicked-button')
   })
-
+  // then I add the special styling to my selected button by toggling the class
   targetButton.classList.toggle('clicked-button')
 
 })
+//  now I add the filtering by first finding the actual selection elemeent in my document
 const selectFilter = document.getElementById('genre-select')
 
-
+// now I add another listen event to see if the user interacts with the filter
 selectFilter.addEventListener("click", () => {
+  // again I need to remove all the books firs
   while (libraryContainer.hasChildNodes()) {
     libraryContainer.removeChild(libraryContainer.firstChild)
   }
-
+  // now I add a conditional to filter according to which selection was made, if it is all then the original book list will be displayed otherwise I will filter accoring to the value of the gerne key
   if (selectFilter.value === 'All') {
     books.forEach(displayBooks)
   } else {
@@ -308,19 +303,9 @@ selectFilter.addEventListener("click", () => {
     let filterBooks = books.filter((book) => {
       return book.genre === selectFilter.value
     })
+    // here I display the subarray with the filtered books
     filterBooks.forEach(displayBooks)
   }
 
 });
 
-// const getOption = () => {
-//   selectElement = document.querySelector('#genre-select')
-//   output
-// }
-
-// make the loading the buttons maybe as a function so then i can can add it to the different buttons...
-// with the filter i could maybe have a drop down with one of them being none?
-// maybe i can have all the buttons listen to the other buttons to control the colors?
-// i could mkae the color switch be like a class switch
-// and then each button could use the same searching functoin just by given the key basically
-// the filtering could maybe be a drop down menue? or different checkmarks? and then you make a subarray with the right genres... then you could have multiple genres selected... could be nice... 
