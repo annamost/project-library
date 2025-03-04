@@ -188,9 +188,6 @@ const books = [
   }
 ]
 
-// we have different buttons for filtering and for sorting
-//  I think for sorting I could keep the author year and rating 
-// for filtering i should have a selector though... for genre for example
 
 // now we need to add one of these book containers for each new book 
 // first we get the elements 
@@ -201,7 +198,8 @@ const largeKey = ['author']
 const mediumKey = ['genre', 'rating']
 const smallKey = ['description']
 
-books.forEach((book) => {
+
+const displayBooks = (book) => {
   // Here we have the overall container that will be added to the library part 
   let bookContainer = document.createElement('div')
   // now we make another div for the picutre and title 
@@ -254,5 +252,75 @@ books.forEach((book) => {
 
 
   libraryContainer.appendChild(bookContainer)
-})
+}
 
+const sortingBooks = (keyName) => {
+  books.sort((a, b) => String(a[keyName]).localeCompare(String(b[keyName])))
+
+}
+
+books.forEach(displayBooks)
+
+// we have different buttons for filtering and for sorting
+//  I think for sorting I could keep the author year and rating 
+// for filtering i should have a selector though... for genre for example
+const authorButton = document.getElementById('author-sort')
+
+const sortByContainer = document.getElementById('sort-by')
+
+sortByContainer.addEventListener('click', function (event) {
+  let targetButton = event.target
+
+  let buttonName = targetButton.id
+  let sortKeyName = buttonName.split('-')[0]
+
+  sortingBooks(sortKeyName)
+
+  while (libraryContainer.hasChildNodes()) {
+    libraryContainer.removeChild(libraryContainer.firstChild)
+  }
+  books.forEach(displayBooks)
+
+  let allButtons = document.querySelectorAll('button')
+  // let allButtonArray = Array.from(sortByContainer)
+  // let nonTargetButtons = allButtonArray.filter(element => element != target)
+
+
+  allButtons.forEach((btn) => {
+    btn.classList.remove('clicked-button')
+  })
+
+  targetButton.classList.toggle('clicked-button')
+
+})
+const selectFilter = document.getElementById('genre-select')
+
+
+selectFilter.addEventListener("click", () => {
+  while (libraryContainer.hasChildNodes()) {
+    libraryContainer.removeChild(libraryContainer.firstChild)
+  }
+
+  if (selectFilter.value === 'All') {
+    books.forEach(displayBooks)
+  } else {
+    // now I will filter for the books that have the right genre. 
+    let filterBooks = books.filter((book) => {
+      return book.genre === selectFilter.value
+    })
+    filterBooks.forEach(displayBooks)
+  }
+
+});
+
+// const getOption = () => {
+//   selectElement = document.querySelector('#genre-select')
+//   output
+// }
+
+// make the loading the buttons maybe as a function so then i can can add it to the different buttons...
+// with the filter i could maybe have a drop down with one of them being none?
+// maybe i can have all the buttons listen to the other buttons to control the colors?
+// i could mkae the color switch be like a class switch
+// and then each button could use the same searching functoin just by given the key basically
+// the filtering could maybe be a drop down menue? or different checkmarks? and then you make a subarray with the right genres... then you could have multiple genres selected... could be nice... 

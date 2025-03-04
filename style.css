@@ -47,7 +47,7 @@ section {
   width: 120px;
 }
 
-.sort-by {
+#sort-by {
   display: flex;
   width: 600px;
   gap: 20px;
@@ -62,7 +62,15 @@ button {
   min-width: 100px;
   border-radius: 40px;
   border: none;
+  cursor: pointer;
 
+}
+
+/* here is the styling for the button when it is enabled */
+.clicked-button {
+  background-color: #D2C1AD;
+  color: #322111;
+  border: 2px solid #322111;
 }
 
 .filter-way {
@@ -70,6 +78,19 @@ button {
   width: 600px;
   gap: 20px;
   align-items: center;
+}
+
+.filter-way select {
+  background-color: #322111;
+  color: #D2C1AD;
+  border: none;
+  border-radius: 40px;
+  font-family: "Sour Gummy", serif;
+  text-shadow: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+
 }
 
 #library-container {
@@ -135,6 +156,8 @@ img {
 .author-info-container h3 {
   margin: 0;
   font-size: 16pt;
+  text-overflow: wrap;
+  text-align: center;
 
 }
 
@@ -153,4 +176,103 @@ img {
 .description-container p {
   padding: 10px 20px;
   margin: 0;
+}
+
+footer {
+  background-color: #322111;
+  font-family: "Sour Gummy", serif;
+
+
+}
+
+.github-link {
+  text-decoration: none;
+  color: #A68167;
+
+}
+
+/* adding some hover effects */
+
+button:hover {
+  border: 2px solid #D2C1AD;
+}
+
+select:hover {
+  border: 2px solid #D2C1AD;
+}
+
+.github-link:hover {
+  opacity: 50%;
+}
+
+@media (max-width: 667px) {
+  section {
+    flex-direction: column;
+  }
+
+  .title-container {
+    width: 100%;
+    margin-bottom: 0;
+
+  }
+
+  .title-container h1 {
+    font-size: 48pt;
+  }
+
+  .sort-container {
+    margin-top: 0;
+  }
+
+  #sort-by {
+    width: 300px;
+    flex-wrap: wrap;
+    margin-left: 80px;
+    position: relative;
+  }
+
+  #sort-by h2 {
+    position: absolute;
+    left: -100px;
+  }
+
+  .filter-way {
+    width: 300px;
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+  }
+
+  .filter-way h2 {
+    position: absolute;
+    left: -100px;
+  }
+
+  #library-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .book-container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 668px) and (max-width: 1024px) {
+  /* #library-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  } */
+
+  .book-container {
+    width: 40%;
+  }
+
+  #sort-by {
+    width: 300px;
+  }
 }
