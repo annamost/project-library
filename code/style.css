@@ -36,10 +36,9 @@ section {
 
 }
 
-/* .filter-container {
-  margin-left: 50px;
-  margin-top: 50px;
-} */
+.title-container a {
+  text-decoration: none;
+}
 
 .sort-container h2 {
   font-family: "DynaPuff", serif;
