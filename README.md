@@ -4,8 +4,8 @@ Project: Build a digital library using an array of books applying newly aquired 
 
 ## Tech stack
 - JavaScript 
-- HTML (precoded)
-- CSS (precoded)
+- HTML 
+- CSS 
 
 ## Project
 
