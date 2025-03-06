@@ -187,10 +187,11 @@ const books = [
 // first we get the element 
 const libraryContainer = document.getElementById('library-container')
 
-// now we make a function where we create a book container for each book 
+// these variables help with the styling 
 const largeKey = ['author']
 const mediumKey = ['genre', 'rating']
 const smallKey = ['description']
+
 
 //  this function will load each of the books into the webpage 
 // I made it a function so that the different sorting and filter options will redisplay the books
@@ -257,7 +258,7 @@ const sortingBooks = (keyName) => {
 // here I now load the default webpage
 books.forEach(displayBooks)
 
-
+/*  for better overview I put the variables for the sorting and filtering close to the function... but I guess putting them all at the top of the document would be better for organisation.. */
 // my buttons for the different sorting are all within one div of the html, so with this I have this specific div as a variable 
 const sortByContainer = document.getElementById('sort-by')
 

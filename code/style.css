@@ -204,6 +204,7 @@ select:hover {
   opacity: 50%;
 }
 
+/* impovements: next time I will start with mobile first again... I was too eager to start with the java script... also for the fill webpage I think doing grid instead of flexbox would be the better way to go.. I will incorporate that in the next project. */
 @media (max-width: 667px) {
   section {
     flex-direction: column;
