@@ -197,18 +197,18 @@ const smallKey = ['description']
 // I made it a function so that the different sorting and filter options will redisplay the books
 const displayBooks = (book) => {
   // Here we have the overall container that will be added to the library part 
-  let bookContainer = document.createElement('div')
+  const bookContainer = document.createElement('div')
   // now we make another div for the picutre and title 
-  let coverContainer = document.createElement('div')
+  const coverContainer = document.createElement('div')
   // This is one for the author and ratings etc
-  let authorInfoContainer = document.createElement('div')
+  const authorInfoContainer = document.createElement('div')
   // And one for the paragrap
-  let descriptionContainer = document.createElement('div')
+  const descriptionContainer = document.createElement('div')
 
 
-  let bookCover = document.createElement('img')
-  let bookTitle = document.createElement('h2')
-  let bookTitleText = document.createTextNode(book.title)
+  const bookCover = document.createElement('img')
+  const bookTitle = document.createElement('h2')
+  const bookTitleText = document.createTextNode(book.title)
 
 
   // this is for the general styling
@@ -229,15 +229,15 @@ const displayBooks = (book) => {
   for (const key in book) {
     // console.log(book[key])
     if (largeKey.includes(key)) {
-      let bookTextLarge = document.createElement('h3')
+      const bookTextLarge = document.createElement('h3')
       bookTextLarge.appendChild(document.createTextNode(`${book[key]} (${book.year})`))
       authorInfoContainer.appendChild(bookTextLarge)
     } else if (mediumKey.includes(key)) {
-      let bookTextMedium = document.createElement('h4')
+      const bookTextMedium = document.createElement('h4')
       bookTextMedium.appendChild(document.createTextNode(`${key}: ${book[key]}`))
       authorInfoContainer.appendChild(bookTextMedium)
     } else if (smallKey.includes(key)) {
-      let bookTextP = document.createElement('p')
+      const bookTextP = document.createElement('p')
       bookTextP.appendChild(document.createTextNode(book[key]))
       descriptionContainer.appendChild(bookTextP)
     }
@@ -259,14 +259,14 @@ const sortingBooks = (keyName) => {
 books.forEach(displayBooks)
 
 /*  for better overview I put the variables for the sorting and filtering close to the function... but I guess putting them all at the top of the document would be better for organisation.. */
-// my buttons for the different sorting are all within one div of the html, so with this I have this specific div as a variable 
+// my buttons for the different sorting are all within one div of the html,npm so with this I have this specific div as a variable 
 const sortByContainer = document.getElementById('sort-by')
 
 // now I am adding a listener so that I know when a button in the sorting div has been pressed
 sortByContainer.addEventListener('click', function (event) {
-  let targetButton = event.target
-  let buttonName = targetButton.id
-  let sortKeyName = buttonName.split('-')[0]
+  const targetButton = event.target
+  const buttonName = targetButton.id
+  const sortKeyName = buttonName.split('-')[0]
 
   // here I am now resprting the books array
   sortingBooks(sortKeyName)
@@ -278,7 +278,7 @@ sortByContainer.addEventListener('click', function (event) {
   // here I now redisplay each book but in the sorted way
   books.forEach(displayBooks)
   // now I want to make sure that the buttons that are not selected return to their default styling 
-  let allButtons = document.querySelectorAll('button')
+  const allButtons = document.querySelectorAll('button')
 
   allButtons.forEach((btn) => {
     btn.classList.remove('clicked-button')
@@ -291,7 +291,7 @@ sortByContainer.addEventListener('click', function (event) {
 const selectFilter = document.getElementById('genre-select')
 
 // now I add another listen event to see if the user interacts with the filter
-selectFilter.addEventListener("click", () => {
+selectFilter.addEventListener("change", () => {
   // again I need to remove all the books firs
   while (libraryContainer.hasChildNodes()) {
     libraryContainer.removeChild(libraryContainer.firstChild)
@@ -301,7 +301,7 @@ selectFilter.addEventListener("click", () => {
     books.forEach(displayBooks)
   } else {
     // now I will filter for the books that have the right genre. 
-    let filterBooks = books.filter((book) => {
+    const filterBooks = books.filter((book) => {
       return book.genre === selectFilter.value
     })
     // here I display the subarray with the filtered books
